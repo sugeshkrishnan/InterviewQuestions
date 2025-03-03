@@ -1,0 +1,149 @@
+About me
+
+Hello, I'm Sugesh Krishnan, with over 17.5 years of experience in the industry. Currently, I serve as a Technical Architect at STL Digital
+I began my career at Tata Consultancy Services (TCS), where I gained valuable experience working with diverse clients across multiple domains such as healthcare, storage, technology and gaming. I have had the opportunity to work with tech giants like GE, EMC², and Adobe. Additionally, I have onsite experience, having served as an onsite lead in the US.
+
+My area of expertise is primarily in web development, both frontend and backend. I have successfully developed and delivered over 6 projects from scratch.
+
+In August 2022, I joined STL Digital, where I led the frontend architecture for a project with Icertis, a global leader in Contract Lifecycle Management (CLM) solutions. We developed a portal (IDN) that enables Icertis partners to onboard customers, develop custom solutions, and deploy them to customer instances, streamlining the CLM process.
+=========================================================
+IDN Architecture
+
+The user accesses the Angular app through Azure Front Door.
+The Angular app redirects the user to Azure AD for authentication.
+Upon successful authentication, Azure AD returns a JWT token.
+The Angular app sends the JWT token in the Authorization header of API requests to the API Gateway.
+
+The API Gateway acts as a proxy between the front-end (Angular) and the back-end microservices.
+The API Gateway validates the JWT token (issued by Azure AD).
+Based on the request, the API Gateway routes the request to the appropriate .NET microservice.
+
+The microservices perform business logic and interact with their respective databases.
+These microservices are hosted as Docker containers in Azure Kubernetes Service (AKS) or Azure App Service.
+Each microservice has its own database or data store ( Azure SQL Database), depending on its requirements.
+Microservices query and manipulate data from their respective Azure SQL Database
+
+Azure Front Door:
+Routes HTTP requests to the appropriate instance of the front-end (Angular app) or the API Gateway.
+Provides global load balancing, SSL termination, and WAF.
+
+
+
+==============================================================
+
+
+Technical Leadership: Mentor developers, review code, and drive technical decisions to maintain high engineering standards.
+
+Initially, I started as a .NET Developer with GE Healthcare, before transitioning to Dell EMC as a Web Developer. Over the years, I have taken on progressively more challenging roles, including Module Lead, Tech Lead, and Onsite Lead, while working on a range of technologies such as HTML, CSS, JavaScript, AngularJS, and later Angular.
+
+One of my significant projects involved migrating Flash-based Casino games to HTML5 for Canadian based Firefly software, an effort that expanded my skill set in both frontend and backend technologies. Following that, I joined Adobe, where I worked on developing a PDF data extraction application using Azure Cognitive Services.
+
+
+
+STL
+STL is a leading global optical and digital solutions company providing advanced offerings to build 5G, Rural, FTTx, Enterprise and Data Centre networks. Telecom operators, cloud companies, citizen networks, and large enterprises recognize and rely on STL for advanced capabilities in Optical Connectivity, Global Services, and Digital and Technology solutions to build ubiquitous and future-ready digital networks.
+Jammu & Kashmir leg of the BharatNet III project in consortium with  Dilip Buildcon Limited. This project, valued at ₹2600 crore.
+With this new BharatNet project, STL is now focused on expanding broadband connectivity to villages, paving the way for enhanced opportunities in education, healthcare, and economic development for the citizens of the state.
+
+===================================================================================================================================================
+What is your leadership style?
+Answer: "My leadership style is collaborative and supportive. I believe in empowering my team by giving them the resources and autonomy they need to succeed. I’m always open to feedback and encourage an environment where ideas can be freely shared. I also set clear expectations and provide constructive feedback to ensure that everyone is aligned with the project goals. I try to lead by example, maintaining a positive attitude and staying hands-on when necessary while trusting my team to handle their responsibilities."
+
+How do you handle a situation where your team is behind schedule or not meeting goals?
+Answer: "When a project is behind schedule or not meeting goals, I first assess the reasons behind it. I check in with the team to identify any obstacles they are facing and offer support or additional resources. I also review the project plan to see if we need to adjust timelines or expectations. It’s important to communicate with stakeholders and reset deadlines if necessary. I motivate the team by focusing on the end goal, breaking the work down into smaller tasks, and providing encouragement and recognition for progress."
+
+What is your approach to delegating tasks?
+Answer: "I delegate tasks based on each team member’s strengths, skills, and development goals. Before delegating, I ensure that I clearly communicate the desired outcome and provide the necessary resources for success. I avoid micromanaging, but I make sure to check in regularly to offer support and answer any questions. By delegating effectively, I not only lighten my workload but also empower my team to grow and take ownership of their responsibilities."
+
+Can you describe a time when you had to handle a difficult customer?
+Alea- they created casino games. The requirement was to convert flash games to html, from day1 they expected us to start working on user stories. Without having much domain knowledge or the business requirement it was challenging.
+User stories were one line, not having much information like acceptance criteria. we onboarded a scrum master immediately which helped to streamline the process. 
+Like description should have enough information about the requirement, acceptence criteria should be there , priority should be mentioned, dependencies should be listed etc. once we communicated clearly with customer, we were able to start and in one year we completed more than 10 poker games.
+
+How do you manage multiple customer inquiries at the same time?
+I prioritize based on urgency and impact. If a customer has a critical issue that affects their ability to use the product, I address it first. For less urgent inquiries, I ensure they are acknowledged, and I work on them as soon as possible. I also use task management tools to track customer requests and make sure no one is left waiting."
+
+How do you handle negative feedback from customers?
+I view negative feedback as an opportunity to improve. I listen carefully to the customer, ensure they feel heard, and ask clarifying questions to fully understand the problem. Afterward, I follow up with a solution and ensure that the feedback is passed on to the team for continuous improvement.
+
+What do you think is the most important factor in customer satisfaction?
+I believe the most important factor in customer satisfaction is a combination of excellent communication and consistently delivering value. Customers want to feel heard and respected, and they expect their issues to be resolved quickly and effectively. Providing personalized service and following up after interactions also plays a key role in their satisfaction."
+
+How do you motivate and manage your team?
+Set Clear Goals and Expectations
+Encourage open and honest communication within the team.
+Offer incentives, such as awards,bonuses, promotions, or public recognition.
+Empower and Trust Your Team--Delegate responsibilities and trust your team to make decisions.
+Promote a culture of collaboration, respect, and inclusivity.
+
+Regular Check-ins: Schedule one-on-one meetings to discuss individual progress and concerns.
+
+Team Building Activities: Organize activities to strengthen team bonds and improve collaboration.
+
+Feedback Mechanisms: Implement systems for continuous feedback, such as surveys or suggestion boxes.
+
+What do you think makes a successful manager?
+A successful manager listens to their team, provides clear direction, and leads by example. They create an environment where everyone feels valued and supported, enabling the team to work collaboratively towards shared goals."
+
+Where do you see yourself in the next 3–5 years?
+In the next 3–5 years, I see myself in a leadership role, driving key initiatives and contributing to the company’s strategic goals. I want to continue learning and expanding my skills, especially in areas such as project management and team leadership, to better support the organization’s growth.
+
+
+Managerial Answers:
+Leadership and Team Management:
+Answer: I mentor junior developers by guiding them through code reviews, explaining architectural decisions, and pairing them with senior developers for hands-on experience. I emphasize best practices, such as SOLID principles and modularization. During code reviews, I focus on clarity, reusability, and maintainability rather than just correctness. I encourage them to ask questions and foster a collaborative environment.
+
+Cross-Department Collaboration:
+Answer: I make sure to have regular sync-ups with backend developers to align on API structures and data flow. I also work closely with UI/UX designers to ensure that the frontend meets the design expectations. Communication tools like Slack, Trello, and Jira help manage tasks and ensure everyone is on the same page. Daily standups are critical to ensure we’re aligned across teams and can quickly address blockers.
+
+Stakeholder Management:
+Answer: I manage stakeholders by prioritizing features based on business value and feasibility. I balance technical debt with feature development by regularly communicating the risks of deferring refactoring and introducing tech debt. For non-technical stakeholders, I use analogies and visualizations to explain why certain technical decisions (e.g., introducing state management) are essential to the app’s scalability and maintainability.
+
+Risk Management and Problem Solving:
+Answer: In a previous project, I identified performance degradation caused by too many HTTP requests triggering on each user action. By debouncing API calls and implementing caching, we improved response time. Identifying such issues early, through both manual testing and automated performance monitoring, is key to mitigating risks. Additionally, using error boundaries ensures stability even when parts of the application break.
+
+Agile Methodology and Development Process:
+Answer: In an Agile team, I ensure that Angular-specific tasks (such as module creation, feature development, or refactoring) are broken down into small, manageable user stories. I work with the Product Owner to estimate tasks using story points and keep velocity tracking in Jira. At the start of each sprint, I ensure that technical debt is accounted for, and any complex architectural work is broken down into smaller tasks.
+
+Technology and Tools Selection:
+Answer: When evaluating new tools or technologies, I look at their maturity, community support, and how well they integrate with Angular. For example, we switched from Protractor to Cypress because it was faster and had a more active community. In a previous app, we used Apollo Client with GraphQL for efficient data fetching instead of traditional REST API calls, significantly reducing over-fetching and improving performance.
+
+Architectural Decisions and Trade-offs:
+Answer: One tough decision was whether to use NgRx or stick to simpler services for state management in a project. We went with NgRx because of the complexity of the app and the need for better state management across multiple modules. The trade-off was the additional boilerplate code and learning curve for the team. However, the maintainability and scalability benefits in the long term justified the decision.
+
+Performance and Monitoring:
+Answer: To ensure performance and scalability, I use Lighthouse for audits and Google Analytics to monitor app performance in production. I track performance using tools like New Relic or Sentry to detect real-time issues. Additionally, I implement A/B testing to measure the impact of performance changes and ensure that any updates do not degrade the user experience.
+==================================================================================================================
+SOLID Design Principles
+
+The SOLID principles are a set of five design principles that, when followed, lead to more maintainable, flexible, and scalable software systems.
+
+1. S - Single Responsibility Principle (SRP)
+
+Explanation: When a class has multiple responsibilities, it becomes more difficult to maintain, as changes in one part of the system may require changes to other parts that should be independent. Keeping a class focused on one responsibility makes it easier to modify and test.
+
+2. O - Open/Closed Principle (OCP)
+
+Explanation: This principle encourages you to design software in a way that allows new functionality to be added without altering the existing code. Instead of modifying existing code, you can extend it (e.g., by using inheritance, interfaces, or composition).
+Example:
+If you have a class that processes payments, you should be able to add new payment methods (e.g., PayPal, Credit Card) without modifying the existing payment class. You can do this by using inheritance or creating interfaces for different payment types and implementing them in separate classes.
+3. L - Liskov Substitution Principle (LSP)
+
+Explanation: Derived classes must be substitutable for their base classes. This means that if a function expects a certain class, you should be able to pass a subclass without introducing bugs. The subclass should respect the contract and behavior defined by the parent class.
+Example:
+Suppose you have a class Bird with a method fly(). If you create a subclass Penguin that cannot fly, it would violate LSP, because you cannot substitute a Penguin object where a Bird object is expected without introducing a problem.
+4. I - Interface Segregation Principle (ISP)
+
+Explanation: Rather than creating a large, general-purpose interface, it's better to create smaller, more specific interfaces. This way, clients only need to know about the methods that are relevant to them. This avoids creating a "fat" interface that forces unrelated functionality onto clients.
+Example:
+Instead of having one large interface like AnimalActions with methods like eat(), sleep(), fly(), and swim(), create smaller, more focused interfaces such as Flyable and Swimmable, and let animals implement only the interfaces that are relevant to them.
+5. D - Dependency Inversion Principle (DIP)
+
+Explanation: This principle suggests that you should depend on abstractions (e.g., interfaces or abstract classes) rather than concrete classes. This decouples the high-level business logic from low-level implementations, making the system more flexible and easier to maintain.
+Example:
+If you have a UserService class that depends on a specific UserRepository for database operations, instead of directly depending on UserRepository, UserService should depend on an abstraction like an IUserRepository interface. This allows you to easily switch out the implementation (e.g., using a mock repository for testing or a different database implementation) without modifying the high-level service.
+ 
+
+solid principles
+caching
+debouncing

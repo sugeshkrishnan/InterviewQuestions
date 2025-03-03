@@ -1,0 +1,1113 @@
+Javascript
+
+
+JavaScript can "display" data in different ways:
+innerHTML, document.write(), window.alert(), console.log()
+Never call document.write after the document has finished loading. It will overwrite the whole document.
+JavaScript does not have any print object or print methods.You cannot access output devices from JavaScript.
+The only exception is that you can call the window.print() method in the browser to print the content of the current window.
+
+
+JavaScript Variables can be declared in 4 ways:
+The var keyword was used in all JavaScript code from 1995 to 2015.
+The let and const keywords were added to JavaScript in ES6 2015.
+The var keyword should only be used in code written for older browsers.
+Automatically: x = 5;y = 6;z = x + y;They are automatically declared when first used.The value of z is: 11
+Using var - Global scope
+Using let- Block scope
+
+Using const
+Variables declared with let have Block Scope
+Variables declared with let must be Declared before use
+Variables declared with let cannot be Redeclared in the same scope
+Variables defined with let can not be redeclared
+
+
+
+
+Variables declared with the var always have Global Scope.
+Variables declared with the var keyword can NOT have block scope
+Variables defined with var can be redeclared.
+var x= "ten";
+var x= 10;
+ Gives value of x as 10. 
+
+
+let x= "ten";
+let  x= 10;
+Gives error “variable already declared
+
+
+
+
+
+
+Redeclaring a variable inside a block will also redeclare the variable outside the block.
+var x = 10;
+// Here x is 10
+{
+var x = 2;
+// Here x is 2
+}
+// Here x is 2
+
+
+Redeclaring a variable using the let keyword can solve this problem.
+Redeclaring a variable inside a block will not redeclare the variable outside the block.
+let and const have block scope.
+let and const can not be redeclared in same scope. By var can be declared as many times.
+let and const must be declared before use.
+let and const does not bind to this.
+let and const are not hoisted.
+Const has to be initialized while declaring const a=10; 
+
+
+In JavaScript, shadowing refers to the situation where a variable declared in a 
+certain scope 
+(like a function or block) has the same name as a variable declared in an outer scope. The inner variable shadows or overrides the outer one within its scope.
+var count = 0
+function print(){
+
+let count =10 // count variable is shadowed
+
+
+}
+Var can be shadowed by let but let cannot be shadowed by var as it has only block scope.
+
+
+
+
+Let Hoisting
+Variables defined with var are hoisted to the top and can be initialized at any time.
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+Meaning: You can use the variable before it is declared:
+Using a let variable before it is declared will result in a ReferenceError.
+Let and const also hoisted(but not like var) but in temporal dead zone. The Temporal Dead 
+Zone (TDZ) is a behavior in JavaScript that occurs when variables are declared using let, const, or class 
+but are accessed before they are initialized. During the TDZ, the variable is in a "dead 
+zone," where it cannot be accessed, and attempting to access it will result in a 
+ReferenceError.
+This concept applies to block-scoped variables (i.e., variables declared with let, const)
+function abc{
+
+
+console.log(a,b,c); //this gives undefined, reference error(cannot use 
+variable before initializing) , reference error(cannot use variable before 
+initializing)
+
+
+var a=10;
+let b=20;
+const c=30;
+
+
+}
+abc()
+
+
+
+
+JavaScript only hoists declarations, not initializations.
+console.log(x)
+Var a = 10;
+Wont give error. It prints undefined. As declarations are hoisted it wont give error.
+
+
+function abc{
+console.log(a,b,c); //this gives undefined, reference error(cannot use variable before initializing) , reference error(cannot use variable before initializing)
+
+var a=10;
+let b=20;
+const c=30;
+
+}
+abc()
+
+
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x;                     // Display x in the element
+var x; // Declare x
+======================================================
+var x = 5; // Initialize x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + y;// Display x and y Here Y is undefined
+elem.innerHTML = x +” “+ y;
+
+
+y = 7;    // Assign 7 to y
+Here y is initialized and not declared. So its not hoisted. So gives undefined
+=========================================================
+Constant
+The const keyword was introduced in ES6 (2015)
+Variables defined with const cannot be Redeclared
+Variables defined with const cannot be Reassigned
+Variables defined with const have Block Scope
+JavaScript const variables must be assigned a value when they are declared
+const PI = 3.14159265359; right
+const PI;wrong
+PI = 3.14159265359; Wrong
+Use const when you declare:
+A new Array
+A new Object
+A new Function
+A new RegExp
+Because of this you can NOT:
+Reassign a constant value
+Reassign a constant array
+Reassign a constant object
+
+
+
+
+
+
+But you CAN:
+Change the elements of constant array
+Change the properties of constant object
+const cars = ["Saab", "Volvo", "BMW"];
+// You can change an element:
+cars[0] = "Toyota";
+// You can add an element:
+cars.push("Audi");
+But you can NOT reassign the array:
+const cars = ["Saab", "Volvo", "BMW"];
+cars = ["Toyota", "Volvo", "Audi"];    // ERROR
+Constant Objects
+// You can create a const object:
+const car = {type:"Fiat", model:"500", color:"white"};
+// You can change a property:
+car.color = "red";
+// You can add a property:
+car.owner = "Johnson";
+But you can NOT reassign the object:
+const car = {type:"Fiat", model:"500", color:"white"};
+car = {type:"Volvo", model:"EX60", color:"red"};    // ERROR
+Datatypes
+String,Number,Bigint,Boolean,Undefined,Null,Symbol,Object
+The Object Datatype
+The object data type can contain both built-in objects, and user defined objects:
+Built-in object types can be:
+objects, arrays, dates, maps, sets, intarrays, floatarrays, promises
+
+
+Functions===================================
+functions are hoisted but function expressions are not hoisted
+
+Anonymous function- function without name
+const myFunc = function() {
+  console.log("This is an anonymous function!");
+};
+Function expression- if function assigned to a variable
+const myFunc = function() {
+  console.log("This is an anonymous function!");
+};
+
+first class function - A function can be passed as params to another function like variables
+
+Functions are hoisted ie entire function in moved to top
+
+var x= 10;
+
+function fname(){
+console.log(x)   
+var x= 5;
+}
+// here it will give undefined. it will take local scope x and its hoisted. when a same variable is present in the scope system will not check global scope
+
+Params vs Argumens ===================================
+
+values passed to a function are arguments-- addfunction(5, 4)
+values which received in a function are params  addfunction(x, y) { let sum = x + y } here x and y are params
+
+var arr=[5,6]
+addfunction(...arr) -- spread operator passes array values 
+
+we can receive also in rest operator(receive is called REST operator)
+addfunction(5,6)
+addfunction(...arr){ let sum = arr[0] + arr[1] }  /arr will have arguments passed to function
+
+const fn =(a, ...num, x,y){ 
+console.log(x,y)
+}
+fn(5,6,7,8,9)
+// this will give error. rest operator can be used as last param
+const fn =(a,x,y, ...num)
+fn(5,6,7,8,9) --- a=5, x=6, y=7 num=[8,9](rest of the arguments)
+=================================================================
+Spread Operator (...)
+The spread operator is used to expand an array or object into individual elements or properties. It’s commonly used to copy or merge arrays and objects.
+const arr1 = [1, 2, 3];   const arr2 = [...arr1, 4, 5];      console.log(arr2); // Output: [1, 2, 3, 4, 5]
+
+Rest Operator (...)
+The rest operator is used to collect multiple elements into a single array or object. It's commonly used in function parameters to gather a variable number of arguments into an array or to extract properties from objects.
+The rest operator can also be used in destructuring to gather the remaining elements or properties into an array or object.
+const [first, second, ...rest] = [1, 2, 3, 4, 5]; here rest will have [3,4,5]
+const {name, age, ...address} = {name: 'John', age: 30, city: 'New York', country: 'USA'}; address= {city: 'New York', country: 'USA'}
+
+Callback function =======================================
+A callback function is a function that is passed as an argument to another function and is executed after the completion of some operation or event. Callbacks allow for asynchronous behavior, enabling JavaScript to handle tasks like reading files, making HTTP requests, or handling user interactions without blocking the execution of other code.
+
+event listeners - map, reduce filter, setTimeout
+
+// A function that takes another function as an argument
+function greet(name, callback) {
+  console.log(`Hello, ${name}!`);
+  callback(); // Calling the callback function
+}
+
+// A callback function that gets passed to the greet function
+function sayGoodbye() {
+  console.log('Goodbye!');
+}
+
+// Calling the greet function with a name and a callback
+greet('Alice', sayGoodbye);
+
+Arrow function ===============================================
+Arrow functions (introduced in ES6) provide a shorter syntax for writing functions in JavaScript. They are particularly useful for creating small, concise functions and for dealing with the this keyword in certain contexts.
+normal function
+const add = function(num1, num2){
+return num1+num2
+}
+
+arrow function
+const add = (num1, num2)=>{
+return num1+num2
+}
+Gives cleaner syntax
+
+difference between normal function and arrow function
+1. syntax- arrow fn gives clean syntax
+2. Implicit return keyword. if its one line function we can remove return keyword in arrow function. ie const add = (num1, num2)=> num1+num2
+3. function fn(){
+    console.log(arguments) // we get the arg values in arguments keyword in normal fn but not in arrow
+}
+fn(5,6)
+
+4. this keyword will point to local scope in normal fn but global scope in arrow
+
+Map=================================
+let numbers = [1, 2, 3, 4, 5];
+
+let doubled = numbers.map(function(number) {
+  return number * 2;
+});
+
+console.log(doubled); // Output: [2, 4, 6, 8, 10]
+map() is a built-in method available on arrays that allows you to create a new array by applying a given function to each element of the original array. 
+
+Key Points:
+Non-mutating: map() creates a new array and does not alter the original array.
+Transformation: It is primarily used for transforming elements in an array.
+Returns a new array: The result of map() is a new array that contains the results of the function applied to each element.
+Immutability: Since map() returns a new array, it is commonly used in functional programming to maintain immutability.
+
+multiple maps
+let result = numbers
+  .map(number => number * 2)  // Double each number
+  .map(number => number + 1); // Add 1 to each doubled number
+  
+When to Use map():
+When you need to transform the elements of an array and return a new array.
+When you need to create a new array based on the results of applying a function to each element of the original array.
+  
+========================================================
+Foreach
+
+forEach():
+Purpose: The forEach() method is used to iterate over an array and perform a side-effect (e.g., logging, modifying external variables, or changing the original array) for each element. It doesn’t return anything (i.e., undefined).
+Return Value: forEach() does not return anything. It returns undefined, and its sole purpose is to execute a function on each array element.
+const numbers = [1, 2, 3, 4];
+
+numbers.forEach(num => {
+    console.log(num * 2);  // Log the doubled value for each element
+});
+
+When to Use forEach():
+When you need to iterate over the array and perform an action on each element (such as logging, updating a variable, or modifying an external state).
+When you don’t need to return a new array and are focused on performing side-effects.
+  
+Filter===============================================
+
+filter() method in JavaScript is a built-in function available on arrays that allows you to create a new array with all elements that pass a specific condition defined in a callback function. It does not mutate the original array, but instead returns a new array
+
+let numbers = [1, 2, 3, 4, 5, 6];
+
+let evenNumbers = numbers.filter(function(number) {
+  return number % 2 === 0; // Only keep even numbers
+});
+
+console.log(evenNumbers); // Output: [2, 4, 6]
+
+Conclusion:
+filter() is a powerful method for extracting subsets of an array based on a condition.
+It is commonly used in data manipulation, handling large datasets, and working with objects in arrays.
+Like other array methods such as map(), filter() promotes immutability by returning a new array instead of modifying the original one.
+
+Reduce================================================
+reduce() method in JavaScript is a built-in function available on arrays that allows you to reduce an array to a single value by applying a function to each element. This function can accumulate the values in the array and return a result, such as a sum, product, or more complex calculation.
+
+Let's say we want to sum all the numbers in an array:
+let numbers = [1, 2, 3, 4, 5];
+
+let sum = numbers.reduce((total,num) => total + num,0) // Initial value of accumulator is 0
+
+console.log(sum); // Output: 15
+
+use an arrow function to simplify the syntax:
+let numbers = [1, 2, 3, 4, 5];
+let sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum); // Output: 15
+
+Closure ===============================================
+Lexical scope - a varialbe defined outside a function(global scope) can be accessed inside a function(local scope)
+
+A closure is a function that "remembers" and has access to variables from its lexical scope, even when the function is executed outside that scope. In other words, closures allow functions to retain access to the variables and parameters from the outer function even after the outer function has finished execution.
+
+function outer() {
+  let counter = 10;  // `counter` is a variable in the outer function
+  
+  function inner() {   
+    console.log(counter);// give value 10 as counter is in lexical scope  }  
+  inner();  /}
+const incrementCounter = outer();
+
+// another example
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc(); // this will still give output Mozilla
+
+so it still have access to its parent scope. no matter if you call there or return that function and call outside
+
+scope chain- it has access to its parent scope and parents parent
+we can call above like this also myFunc()(). first () will return a function then second() will call that function
+
+//scope chain example
+// global scope
+const e = 10;
+function sum(a) {
+  return function (b) {
+    return function (c) {
+      // outer functions scope
+      return function (d) {
+        // local scope
+        return a + b + c + d + e;
+      };
+    };
+  };
+}
+
+console.log(sum(1)(2)(3)(4)); // 20
+sum called with arg 1, then return another fn. call that fn with arg 2, that will return a fn. and so on
+
+
+Currying=============================================================
+Currying is a functional programming concept where a function that takes multiple arguments is transformed into a series of functions, each taking one argument. 
+
+Consider a simple function that adds two numbers:
+
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 3));  // Output: 5
+
+With currying, we can rewrite this function to take one argument at a time:
+
+function add(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+
+const addTwo = add(2);  // The first function call returns a new function
+console.log(addTwo(3));  // Output: 5
+
+OR addTwo(2)(3)// gives 5
+Benefits of Currying:
+Partial Application: You can create specialized functions by fixing some arguments ahead of time.
+Reusability: You can reuse the curried functions with different arguments.
+Functional Programming: Currying is widely used in functional programming, allowing for cleaner and more modular code.
+
+================================================================================
+What Are Side Effects in Programming?
+A side effect in programming refers to any change or observable interaction that occurs outside of the scope of a function's return value. In simpler terms, side effects occur when a function or method modifies something outside its own scope (such as a variable, a database, the DOM, etc.) or interacts with external systems, and this modification is not directly reflected in the return value of the function.
+
+Types of Side Effects
+Mutating Variables: A function modifies variables outside its scope.
+
+let counter = 0;
+
+function increment() {
+    counter++;  // Modifies the external variable 'counter'
+}
+Modifying Data Structures: A function modifies an array, object, or other data structures that are passed to it.
+const arr = [1, 2, 3];
+
+function addToArray(element) {
+    arr.push(element);  // Modifies the external array 'arr'
+}
+Logging: Functions that produce output through console.log() or similar methods.
+
+function logMessage(message) {
+    console.log(message);  // Logs to the console (side effect)
+}
+Network Requests: A function sends an HTTP request or interacts with an API.
+
+function fetchData() {
+    fetch('https://api.example.com')
+        .then(response => response.json())
+        .then(data => console.log(data));  // Fetches external data
+}
+Modifying the DOM: In the context of web programming, any manipulation of the DOM is considered a side effect.
+
+function updateElementContent() {
+    document.getElementById('myDiv').innerHTML = 'New Content';  // Modifies the DOM
+}
+
+
+this keyword====================================================================
+The this Keyword in JavaScript
+In JavaScript, the this keyword refers to the context in which a function is called. It can point to different objects depending on how the function is called. Understanding this is crucial for working with objects, classes, and event handling in JavaScript.
+
+The value of this is determined at runtime (i.e., when a function is invoked), not at the time of definition.
+In the global execution context (outside of any function), this refers to the global object:
+
+In browsers, this refers to the window object.
+this in a Method:
+When a function is called as a method of an object, this refers to the object that the method is a property of.
+
+this in a Regular Function:
+When a function is called in the global context (not as part of an object), this refers to the global object
+
+this in a Constructor Function:
+When a function is invoked using the new keyword (i.e., as a constructor), this refers to the newly created object.
+
+this in Arrow Functions:
+Arrow functions behave differently from regular functions. They do not have their own this, and instead, this is lexically bound, meaning it takes the value of this from the surrounding (outer) context.
+
+this in Event Handlers:
+When using this inside an event handler, this usually refers to the element that fired the event.
+
+this in Classes (ES6):
+In JavaScript classes, this refers to the instance of the class.
+
+call() Method===========================================================
+
+The call() method invokes a function with a specified this value and arguments provided individually.
+thisArg: The value that will be assigned to this inside the function when it is called.
+arg1, arg2, ...: The arguments that are passed individually to the function.
+
+function greet(city, country) {
+  console.log(this.name + " lives in " + city + ", " + country);
+}
+
+const person = { name: "Alice" };
+
+// Use call to invoke the function with `this` set to `person`
+greet.call(person, "Paris", "France");
+// Output: Alice lives in Paris, France
+
+apply() Method===================================================
+The apply() method is similar to call(), but the difference lies in how arguments are passed. apply() accepts the arguments as an array (or an array-like object).
+
+greet.apply(person, ["London", "England"]);
+// Output: Bob lives in London, England
+
+Key Difference Between call() and apply():
+call() takes arguments individually.
+apply() takes arguments as an array.
+
+bind()=================================================================
+The bind() method is different from call() and apply() in that it does not immediately invoke the function. Instead, it returns a new function where this is permanently set to the value provided.
+
+const person = { name: "Charlie" };
+
+function greet(city, country) {
+  console.log(this.name + " lives in " + city + ", " + country);
+}
+
+// Use bind to create a new function with `this` bound to `person`
+const greetCharlie = greet.bind(person);
+
+// Now greetCharlie can be called later
+greetCharlie("New York", "USA");
+// Output: Charlie lives in New York, USA
+======================================================================================
+Promise and Async await
+
+In JavaScript, both Promise and ``async/await` are used to handle asynchronous operations, but they work in different ways.
+A Promise is an object representing the eventual completion or failure of an asynchronous operation. It allows you to handle asynchronous results using .then(), .catch(), and .finally() methods.
+3 states of promise
+Pending: The initial state of a Promise. The operation has started but hasn't completed yet (neither fulfilled nor rejected).
+
+Fulfilled(resolve): The state of a Promise that means the operation completed successfully, and the promise has a resulting value.
+
+Rejected(reject): The state of a Promise that means the operation failed, and the promise has a reason (error) for the failure.
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  
+  if(success) {
+    resolve("Operation was successful!");
+  } else {
+    reject("Operation failed.");
+  }
+});
+
+myPromise
+  .then(result => console.log(result))  // "Operation was successful!"
+  .catch(error => console.error(error)); // "Operation failed."
+  
+promise chaining-------------------
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Data 1 fetched"), 1000);
+  });
+}
+function fetchData2() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Data 2 fetched"), 1000);
+  });
+}
+
+fetchData()
+  .then(data => {
+    console.log(data);
+    return fetchData2();  // Chain another async operation
+  })
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+  
+  
+Async await
+async/await is a more recent syntactic sugar built on top of Promises. It makes working with asynchronous code even more readable and similar to synchronous code. It allows you to pause execution and wait for a promise to resolve or reject, but without blocking the main thread.
+
+async: A function that is declared with async automatically returns a Promise. Inside this function, you can use await.
+await: Used inside an async function to wait for a Promise to resolve or reject
+
+// Simulate an asynchronous function (e.g., fetching data from a server)
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true; // Change this to false to simulate an error
+      if (success) {
+        resolve("Data fetched successfully!");
+      } else {
+        reject("Failed to fetch data.");
+      }
+    }, 2000); // Simulating a 2-second delay
+  });
+}
+
+// Async function to handle the data fetching
+async function getData() {
+  try {
+    console.log("Fetching data...");
+    const result = await fetchData();  // Waits for the fetchData promise to resolve
+    console.log(result);  // If resolved, prints the result
+  } catch (error) {
+    console.error(error);  // If rejected, prints the error
+  }
+}
+
+getData();
+fetchData(): A function that returns a Promise. It simulates fetching data and resolves with a success message after 2 seconds, or rejects with an error message.
+getData(): An async function that waits for the result of fetchData() using await. If the promise resolves successfully, it logs the data; otherwise, it catches the error and logs it.
+
+===============================================================================================================
+Event Propagation
+
+
+
+Event Bubbling---event bubbling refers to the process by which an event starts at the target element and then bubbles up to its ancestors (parent elements) in the DOM hierarchy. 
+Events are executed from bottom to top.
+Suppose there is a div and inside a form and inside a button. If there are events in all these elements, and when we click button first button event will be triggered followed by form and then div. 
+There are few events which wont bubble like focus, blur, change, submit, reset,keypress, keyup/down,   
+
+
+Difference between event.target vs this.target vs event.currentTarget
+there is Div, Form, Button and button is clicked
+event.currentTarget- the element to which the event handler is currently attached. button , form, div
+event.target- the actual element that triggered the event. Here value= button,button,button as only button is clicked
+this.target- this inside an event handler refers to the element that the event listener is attached to, not the target of the event. This gives Button, Form, Div
+
+Event capturing/ Trickling
+Makes events execute from top to bottom. To make it work , in eventlistener add capture:true in all eventlisteners.
+div.addEventListener("click", function() {
+	alert("div");
+}, { capture: true });
+
+Now when we click button it will execute Div, Form, Button
+
+How to stop bubbling-- whereever u dont want bubbling, take the event and add e.stopPropagation();. So when button is clicked it will trigger only button listener.
+div.addEventListener("click", function(e) {
+	e.stopPropagation();
+	alert("div");
+});
+
+Event Delegation---is a technique in JavaScript where you attach a single event listener to a parent element instead of adding individual listeners to each child element. The event listener on the parent element will listen for events from its child elements through a mechanism called event bubbling.When an event is triggered on a child element, it bubbles up to its parent elements in the DOM hierarchy, eventually reaching the root of the document.
+Eg: suppose there are list of products. when you click on each product it should perform some action. Instead of adding eventListeners to each product we will add it to its parent. We can use event.target.tagName to identify which item is clicked.
+
+
+================================================================================
+  
+  
+Difference between Promise	& Async/Await
+Syntax	Uses .then(), .catch(), and .finally() for handling asynchronous results.
+Uses async function and await to handle promises, making it look synchronous.
+
+Readability	Chaining can become hard to follow, especially with nested Promises (callback hell).
+More readable and looks like synchronous code.
+
+Error Handling	Errors are caught using .catch() or .finally().	
+Errors are caught using try/catch blocks.
+
+Return Value	A Promise is returned from a function.	
+An async function always returns a Promise.
+
+Flow Control	Requires explicit chaining (then()) for sequential operations.	
+Uses await to pause execution and wait for results.
+
+Support for Multiple Operations	Needs multiple chained .then() or Promise.all() for handling multiple promises.	
+async/await allows handling multiple promises sequentially or concurrently with Promise.all().
+
+  When to use:
+Promises: Use when you need to handle multiple asynchronous operations in a chain or when working with older codebases that use .then()/.catch().
+Async/Await: Use for more readable, synchronous-looking asynchronous code, especially when you need to handle multiple asynchronous operations in sequence.
+
+
+
+Make website responsive====================================================
+Use a Fluid Layout (Percentage-based widths)
+Avoid using fixed pixel values for widths and heights. Instead, use percentages or relative units like em, rem, or vw (viewport width) and vh (viewport height).
+
+Media Queries
+Media queries allow you to apply different styles depending on the device's characteristics like screen width, height, orientation, and resolution. 
+
+@media screen and (min-width: 768px) {
+    body {
+        background-color: lightblue;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    body {
+        background-color: lightgreen;
+    }
+}
+@media screen and (orientation: landscape) {
+    body {
+        font-size: 18px;
+    }
+}
+
+Use Flexible Grid Layouts
+CSS Grid and Flexbox are powerful layout systems that make creating responsive layouts easier.
+
+Responsive Images
+Use the max-width: 100% rule on images to ensure they scale according to the width of their container. Additionally, use the <picture> element or the srcset attribute to serve different images for different screen sizes and resolutions.
+<picture> tag used to define pictures of different sizes for same image.
+<picture>
+  <source srcset="image1.jpg" media="(max-width: 600px)">
+  <source srcset="image2.jpg" media="(max-width: 1200px)">
+  <img src="default.jpg" alt="Sample Image">
+</picture>
+
+Avoid Fixed Positioning and Fixed Widths-- user % or em, rem
+
+Use framework libs like bootstrap, foundation, tailwind css
+
+em and rem========================================================
+
+The em unit is relative to the font size of its closest parent (or the element itself if used for font size).
+
+.parent {
+  font-size: 16px;
+}
+
+/* Child element with font size of 2em, which is 2 * 16px = 32px */
+.child {
+  font-size: 2em; // sohere font size will be 32 px;  
+}
+
+rem in CSS
+The rem unit stands for "root em" and is relative to the root element's font size (typically the <html> element). 
+
+what are the types of position in CSS?========================================
+The position types are static, relative, absolute, fixed, and sticky.
+static: The default positioning of elements.
+relative: Positioned relative to its normal position. Use top, right, bottom, and left to adjust the element’s position.
+Absolute:Positioned relative to the nearest positioned ancestor (not static), or to the initial containing block if none exists.
+Fixed: Positioned relative to the viewport; it remains in the same position even when the page is scrolled.
+Sticky:Behaves like a combination of relative and fixed positioning. It sticks to a defined position within its container while scrolling.
+
+!important==============================================
+!important rule is a special flag that can be added to a style declaration to give it higher specificity and force it to override other conflicting rules, even if they are declared later or have a higher specificity.
+
+pseudo class or pseudo elements in css ==============================================
+
+.my-class::before {
+  content: "Before ";
+  color: red;
+}
+::before and ::after: Insert content before or after an element.
+::first-letter: Style the first letter of a block of text.
+::first-line: Style the first line of a block of text.
+::selection: Style selected text.
+::placeholder: Style the placeholder text in form elements.
+::backdrop: Style the backdrop of modal or fullscreen elements.
+::marker: Style list item markers (bullet points or numbers).
+::focus: (Less common) Can be used in combination with other styles when an element is focused.
+================================================================================
+CSS Modules
+CSS Modules is a CSS approach that helps in writing modular and reusable styles without worrying about global styles leaking or conflicting. 
+
+Scoped Styles: Styles are scoped to the component or module they belong to, so there's no global leakage or conflicts.
+Automatic Unique Class Names: Class names are automatically transformed into unique, locally scoped names, reducing the risk of collisions.
+Composition Support: You can compose CSS styles by importing and reusing classes from other modules.
+
+step 1:If you're using Create React App, CSS Modules are already supported. If you're setting it up manually with Webpack, you'll need to configure CSS Modules in your webpack.config.js.
+
+For react Just use .module.css files to indicate the CSS Module.
+
+step2: Create a file called Button.module.css and add necessary css
+
+step3: Now, import the CSS Module into your React component: 
+import styles from './Button.module.css'; and use as 
+ <button className={styles.button}>Click Me</button>
+ 
+ if we see in browser devtools As you can see the class was transformed and an unique identifier was added as well. ie styles.button will be shown as .button_123455
+ 
+ step4: Handling Multiple Classes
+You can also combine multiple classes with classNames:
+<button className={classNames(styles.button, styles.primary)}>
+      Click Me
+    </button>
+	
+Benefits of CSS Modules
+No Global Styles: Each class name is scoped locally, so there’s no risk of global style conflicts.
+Maintainability: The structure of your styles is modular and tied to components, making it easier to maintain.
+Composition: You can reuse and compose styles across components, reducing redundancy.
+Automatic Class Name Hashing: Class names are automatically hashed at build time (e.g., button_1f4d3), ensuring uniqueness.
+
+Benefits Over Traditional Global CSS
+Avoids Global Namespace Pollution: Traditional CSS can cause styles to leak and override each other. With CSS Modules, classes are locally scoped to the component, avoiding this issue.
+Better Maintenance: It makes it easier to maintain and refactor CSS since each file is modular and tied to a specific component.
+Improved Readability: Class names are automatically transformed into scoped names, so it's easy to see which styles belong to which component.
+=============================================================================================
+Tailwind CSS is a utility-first CSS framework that enables you to build designs directly in your HTML or JSX by applying pre-defined utility classes. Rather than writing custom CSS for every element, you compose styles by combining small, reusable utility classes.
+
+
+Tailwind CSS is a utility-first CSS framework that enables you to build designs directly in your HTML or JSX by applying pre-defined utility classes. Rather than writing custom CSS for every element, you compose styles by combining small, reusable utility classes. This results in more concise code and faster development, especially for complex UIs.
+
+Here’s everything you need to get started with Tailwind CSS:
+
+1. What is Tailwind CSS?
+Tailwind CSS is a utility-first framework where you use pre-defined utility classes to style your HTML elements. It doesn't provide ready-made components like some other frameworks (e.g., Bootstrap), but instead, it provides small, atomic classes for common properties like padding, margin, color, fonts, and layout.
+
+Examples of Tailwind CSS utility classes:
+p-4 — padding of 1rem (16px)
+bg-blue-500 — background color of a specific shade of blue
+text-white — sets text color to white
+hover:bg-blue-700 — changes the background color when the element is hovered
+===================================================================================================
+
+Javascript is singlethreaded synchronous
+
+JavaScript executes code in a single thread, meaning only one operation can be executed at a time. 
+However, JavaScript's event-driven, non-blocking model allows it to handle long-running operations like I/O without freezing.
+JavaScript uses an event loop and call stack to manage operations. The event loop allows JavaScript to process asynchronous tasks, such as handling network requests or waiting for user input, without blocking the main thread.
+When an asynchronous operation (like reading a file or making an HTTP request) is encountered, JavaScript doesn't block the execution of subsequent code. Instead, it pushes the asynchronous operation to the callback queue once it's completed.
+The event loop constantly checks the call stack (where the code is executing) and moves tasks from the callback queue to the call stack when it’s free, ensuring that the single thread doesn't block.
+
+Web Workers allow you to run those tasks in separate threads without affecting the main UI thread.
+
+===============================================================================================
+function timeout(){
+    setTimeout(() => {
+        console.log("Data fetched successfully!");
+    }, 0);
+}
+
+console.log("start");
+timeout();
+console.log("end");
+
+//Output
+start
+end
+Data fetched successfully!
+
+setTimeout is an asynchronous function. Even though the delay is set to 0, it doesn't execute the callback immediately. Instead, it places the callback (console.log("Data fetched successfully!")) in the event queue, to be executed after the current call stack is cleared.
+This means that the code inside setTimeout will only run after all the synchronous code has finished executing.
+======================================================================================================
+function timeout(){
+    for(var i=0;i<3;i++){
+    setTimeout(()=>{
+
+        console.log(i);
+        },1000);
+}
+}
+
+timeout();
+Gives-- 3,3,3
+
+Loop Iteration: The loop iterates three times (i = 0, 1, 2). However, due to the asynchronous nature of setTimeout, all three setTimeout calls are scheduled at once (within the same iteration of the loop), with a delay of 1000 milliseconds (1 second).
+
+The callback function inside setTimeout captures the reference to i, not its value at the time the callback is scheduled. This is a key point: JavaScript uses closures, so the value of i that is logged inside the callback will be the value of i after the loop finishes.
+
+The loop completes quickly, incrementing i to 3, and then exits. After 1 second, when the setTimeout callbacks are executed, the value of i is 3, because that is the final value of i after the loop terminates.
+
+Since var is function-scoped (not block-scoped like let), there is only one shared i in the entire function. By the time the setTimeout callbacks execute, the loop has already finished, and i has been incremented to 3
+====================================================================================
+Fix above using let
+
+function timeout(){
+    for(let i=0;i<3;i++){
+    setTimeout(()=>{
+
+        console.log(i);
+        },1000);
+}
+}
+
+timeout();
+Gives -- 1,2,3
+========================================================================================
+Sort descending numbers
+let arr = [1, 2, 9, 4, 6, 3];
+
+// Sort the array in descending order
+arr.sort((a, b) => b - a);
+
+console.log(arr);  // Output: [9, 6, 4, 3, 2, 1]
+===============================================================================
+filter dupicates
+let uniqueArr = arr.filter((value, index, self) => {
+    return self.indexOf(value) === index;
+})
+
+
+Or
+let arr=[1,2,2,2,3,3,3,4,4,5]
+let final = [...new Set(arr)]//remove duplicates gives[1,2,3,4,5]
+==================================================================
+ Shallow Copy
+A shallow copy creates a new array or object, but it only copies the references to the nested objects or arrays, not the actual objects or arrays themselves.This means if the original nested objects or arrays are modified, the shallow copy will also be affected.
+let arr = [1, 2, 3, [4, 5]];
+
+// Create a shallow copy using slice or spread operator
+let shallowCopy = [...arr];
+
+// Modify a nested array in the original array
+arr[3][0] = 100;
+
+console.log(arr);         // [1, 2, 3, [100, 5]]
+console.log(shallowCopy); // [1, 2, 3, [100, 5]] (affected as well as it refers to same reference)
+
+Deep copy
+A deep copy creates a new array or object, and it recursively copies all elements and properties, including nested objects or arrays. This means that changes to the original object or array will not affect the deep copy, and vice versa.
+
+let arr = [1, 2, 3, [4, 5]];
+
+// Create a deep copy using JSON.parse and JSON.stringify
+let deepCopy = JSON.parse(JSON.stringify(arr));
+
+// Modify a nested array in the original array
+arr[3][0] = 100;
+
+console.log(arr);         // [1, 2, 3, [100, 5]]
+console.log(deepCopy);    // [1, 2, 3, [4, 5]] (not affected)
+==========================================================
+how to exit foreach in javascript-- not possible
+let arr = [1, 2, 3, 4, 5];
+
+arr.forEach((item) => {
+  if (item === 3) {
+    return;  // Stops the current iteration when item is 3, but continues with the next items
+  }
+  console.log(item);
+});
+============================================================
+
+array = [1,2,3,4]
+isTrue = true
+ 
+.HTML
+
+<div *ngIf="isTrue" *ngFor="let arr of array">
+              <h2>Serial {{arr}}</h2>
+              <p>Samle Test</p>
+</div>
+
+
+<div id="parent">
+ <div id="child">Child</div>
+</div>
+ 
+const child = document.querySelector('#child');
+const parent = document.querySelector('#parent');
+ 
+ 
+child.addEventListener(
+ 'click',
+ function () {
+   console.log('Child Clicked');
+ }
+);
+ 
+parent.addEventListener(
+ 'click',
+ function () {
+  console.log('parent clicked');
+ }, true
+);
+
+
+
+
+
+
+
+
+<div id="parent">
+ <div id="child">Child</div>
+</div>
+ 
+const child = document.querySelector('#child');
+const parent = document.querySelector('#parent');
+ 
+ 
+child.addEventListener(
+ 'click',
+ function () {
+   console.log('Child Clicked');
+ }
+);
+ 
+parent.addEventListener(
+ 'click',
+ function () {
+  console.log('parent clicked');
+ }, true
+);
+ 
+const numr = ["1","2","3","4","5","6","7"];
+ 
+numr.forEach((num) => {
+if (num === "3") {
+ return;
+}
+console.log(num);
+});
+
+1
+2
+ ==================================
+ viewchild attribute
+ 
+ why is it used. why cant we directly access the child elements--used if we dont know the child items. eg:shopping list .
+ 
+ ===============================================
+
+
+
+
+What will be logged to the console and why?
+
+javascript
+Copy code
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, i * 1000);
+}
+
+Opuput ?
+const a = {};
+const b = { key: 'b' };
+const c = { key: 'c' };
+
+a[b] = 123;
+a[c] = 456;
+
+console.log(a[b]);
+
+Answer=456
+a[b] = 123; // This becomes a["[object Object]"] = 123;
+a[c] = 456; // This overwrites the same property: a["[object Object]"] = 456;
+
+
+If you want to use objects as keys without them being coerced to strings, you can use a Map instead of a regular object, because Map can use objects as keys directly.
+
+javascript
+Copy code
+const a = new Map();
+const b = { key: 'b' };
+const c = { key: 'c' };
+
+a.set(b, 123);
+a.set(c, 456);
+
+console.log(a.get(b)); // Output: 123
+
+
+
+function foo() {
+  console.log(1);
+}
+
+foo();
+
+var foo = function() {
+  console.log(2);
+};
+
+foo();
+
+
+Output 1,2
+
+Why does margin: 0 auto; center some elements but not others?
+margin: 0 auto; centers an element horizontally only if the element has the following:
+
+A block-level element or an element with display: block.
+A specified width. Without a width, the element takes the full width of its container, so there's no room for auto margins to work.
+Elements like div, section, etc., are block-level by default, but span and inline elements will not be centered unless their display is changed to block or inline-block and a width is specified.
+
+
+Why doesn't z-index work as expected?
+Answer: The z-index property only works on positioned elements, meaning elements that have position set to anything other than static (e.g., relative, absolute, fixed, or sticky).
+div {
+  z-index: 10; /* Won't work because position is static by default */
+}
+
+What happens when you apply height: 100% to an element? The div is not expanded 100% why?
+
+
+
+lets say you have a parent component which is rendering a child component which is rendering a child component and so on …….
+now the question is we have a useEffect in each component and just a console log statement in each component
+
+what would be the sequence of the logs
+
+
+How to access DOM elements in React?
+
+
+
+
+
+
+
+
+
+

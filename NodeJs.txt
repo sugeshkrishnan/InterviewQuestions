@@ -1,0 +1,375 @@
+What is Node.js?
+
+Answer: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows you to run JavaScript server-side, enabling you to build scalable, high-performance applications, particularly for I/O-bound tasks like web servers or real-time applications. It’s event-driven and non-blocking, which makes it suitable for applications that need to handle many concurrent requests.
+===================================================================================
+What is the event loop in Node.js?
+
+Answer: The event loop is a core part of Node.js’s concurrency model. It allows Node.js to perform non-blocking I/O operations by offloading tasks to the system kernel while it continues processing other events. The event loop runs in a single thread, processing events and callbacks, and it helps Node.js handle many concurrent operations efficiently.
+
+Call Stack:
+The call stack is a LIFO (Last In, First Out) data structure that tracks the function calls in your program.
+When a function is called, it's added to the top of the stack. When a function returns, it's removed from the stack.
+JavaScript is single-threaded, meaning only one function can be executed at a time. The currently executing function is always at the top of the call stack.
+
+Task Queue (aka Callback Queue):
+When an asynchronous operation (like reading a file or making an HTTP request) is initiated, it's offloaded to the system kernel (if possible) or another thread.
+Once the operation is complete, a callback function associated with that operation is added to the task queue.
+The task queue holds these callbacks, waiting for their turn to be executed.
+
+Event Loop:
+The event loop is a continuously running process that checks the call stack and the task queue.
+It follows a simple algorithm:
+Check if the call stack is empty.
+If the call stack is empty, check if there are any callbacks in the task queue.
+If there are callbacks in the task queue, take the oldest one and push it onto the call stack for execution.
+
+What is the role of callback functions in Node.js?
+
+Answer: In Node.js, callback functions are used to handle asynchronous operations. They allow Node.js to continue executing code without waiting for I/O operations (e.g., file reading, database queries) to complete. Once the operation finishes, the callback function is invoked to handle the result or any error.
+
+=====================================================================================
+What are streams in Node.js?
+
+Answer: Streams are used to handle reading and writing data in a continuous flow. There are four types:
+Readable streams allow data to be read.
+Writable streams allow data to be written.
+Duplex streams allow both reading and writing.
+Transform streams are a type of duplex stream where the output is a transformation of the input data.
+=====================================================================================
+What is the 'require' function in Node.js?
+
+Answer: The require function is used to import modules or files into a Node.js application. When you call require('moduleName'), it loads and executes the specified module, returning the module's exported objects, functions, or variables.
+=====================================================================================
+Explain the concept of middleware in Node.js (especially in Express.js).
+
+Answer: Middleware in Node.js (particularly in Express.js) is a function that receives the request and response objects, and it has the ability to modify them or perform other tasks before the final request handler is executed. Middleware functions are often used for logging, authentication, error handling, and more. They are executed in the order in which they are defined.
+=====================================================================================
+setImmediate() schedules a callback to run after the current event loop cycle, executing once all I/O tasks are completed.
+setTimeout() schedules a callback to run after a specified delay.
+setInterval() schedules a callback to run at regular intervals.
+=====================================================================================
+What are clusters in Node.js?
+
+Answer: Clustering in Node.js allows the creation of multiple child processes (workers), which share the same server port. This enables you to take advantage of multiple CPU cores, improving performance and scalability for Node.js applications.
+=====================================================================================
+What is the use of the 'Buffer' class in Node.js?
+
+Answer: The Buffer class is used for handling raw binary data. It's particularly useful for dealing with binary data streams (e.g., when reading from files or interacting with TCP streams), since JavaScript strings are not well-suited for binary data.
+=====================================================================================
+What is CORS and how do you handle it in Node.js?
+
+Answer: CORS (Cross-Origin Resource Sharing) is a mechanism that allows web browsers to make requests to a domain other than the one from which the original document was served. In Node.js, CORS can be handled using middleware (like the cors package in Express), which adds the necessary HTTP headers to responses to enable cross-origin requests.
+=====================================================================================
+What are Promises and async/await in Node.js?
+
+Answer:
+Promises represent the eventual result of an asynchronous operation, allowing you to handle success or failure with .then() and .catch().
+async/await is syntactic sugar over Promises. The async keyword defines a function that always returns a Promise, and await pauses execution until the Promise is resolved.
+=====================================================================================
+What is the 'EventEmitter' class in Node.js?
+
+Answer: The EventEmitter class in Node.js is used to handle events and listeners. It allows objects to emit events and allows other objects to listen for and respond to those events. It is commonly used in handling asynchronous operations, such as reading files or making HTTP requests.
+=====================================================================================
+Explain the concept of "non-blocking I/O" in Node.js.
+
+Answer: Non-blocking I/O means that I/O operations (e.g., reading from a file, querying a database) do not block the main thread. While waiting for I/O operations to complete, Node.js can continue to handle other tasks. This improves scalability and responsiveness, especially in applications with high concurrency.
+=====================================================================================
+What is a memory leak in Node.js, and how do you prevent it?
+
+Answer: A memory leak in Node.js occurs when the application retains references to objects no longer needed, preventing them from being garbage collected. To prevent memory leaks, avoid unnecessary references, and use tools like heap snapshots to monitor memory usage.
+=====================================================================================
+What are the advantages of using Node.js for microservices architecture?
+
+Answer: Node.js is lightweight, scalable, and well-suited for microservices. Its event-driven, non-blocking architecture allows for fast communication between microservices. Additionally, using JavaScript across both front-end and back-end reduces the cognitive load on developers.
+=====================================================================================
+Explain the purpose of the async_hooks module in Node.js.
+
+Answer: The async_hooks module in Node.js allows you to track the lifecycle of asynchronous operations. This is useful for debugging, logging, and monitoring how asynchronous resources are created, executed, and destroyed.
+=====================================================================================
+How can you optimize performance in a Node.js application?
+
+Answer: Performance optimization techniques include:
+Profiling and monitoring the app using tools like Node.js profiler and PM2.
+Using clustering to leverage multiple CPU cores.
+Reducing synchronous I/O operations.
+Caching frequently accessed data (e.g., using Redis).
+Optimizing database queries.
+Using gzip compression for responses.
+=====================================================================================
+What is the difference between process.nextTick() and setImmediate()?
+
+Answer:
+process.nextTick() schedules a callback to be invoked in the same phase of the event loop, before any I/O tasks.
+setImmediate() schedules a callback to be invoked in the next event loop iteration, after I/O events.
+
+=====================================================================================
+What are some common security risks in Node.js applications and how do you mitigate them?
+
+Answer:
+SQL injection: Use parameterized queries and ORMs.
+Cross-Site Scripting (XSS): Sanitize user input and escape output.
+Cross-Site Request Forgery (CSRF): Use anti-CSRF tokens.
+Ensure HTTPS: Use HTTPS for secure communication.
+Rate limiting: Prevent abuse by limiting the number of requests.
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+
+
+
+Expressjs
+
+Why should you use Node.js and Express to build your REST API?
+Here are four key advantages of Node.js and Express:
+
+The ability to use a single language (JavaScript) for both client-side and server-side development.
+Fast and powerful performance, owing to the ability to run multiple requests in parallel.
+Middleware and routing capabilities that are built into Express to make API development quick and easy.
+A large, active community of developers contributing to the ecosystem.
+
+
+Use the application generator tool, express-generator, to quickly create an application skeleton.
+npx express-generator
+
+It sets up the basic structure of an Express.js app, including configurations, routing, and other common Express-related settings. This allows developers to quickly scaffold a new Express project without manually setting up all the dependencies and configurations.
+my-app/
+├── bin/
+├── node_modules/
+├── public/
+├── routes/
+├── views/
+├── app.js
+├── package.json
+├── package-lock.json
+===================================================================================================
+Basic routing
+Routing refers to how an application’s endpoints (URIs) respond to client requests. For an introduction to routing, see Basic routing.
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+Each route can have one or more handler functions, which are executed when the route is matched.
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
+
+use the express.static built-in middleware function in Express.
+
+The function signature is:
+
+express.static(root, [options])
+
+There is a special routing method, app.all(), used to load middleware functions at a path for all HTTP request methods.
+app.all('/secret', (req, res, next) => {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
+
+This route path will match requests to /about.
+
+app.get('/about', (req, res) => {
+  res.send('about')
+})
+
+This route path will match acd and abcd.
+
+app.get('/ab?cd', (req, res) => {
+  res.send('ab?cd')
+})
+
+This route path will match abcd, abbcd, abbbcd, and so on.
+
+app.get('/ab+cd', (req, res) => {
+  res.send('ab+cd')
+})
+This route path will match abcd, abxcd, abRANDOMcd, ab123cd, and so on.
+
+app.get('/ab*cd', (req, res) => {
+  res.send('ab*cd')
+})
+This route path will match /abe and /abcde.
+
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
+})
+This route path will match anything with an “a” in it.
+
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
+This route path will match butterfly and dragonfly, but not butterflyman, dragonflyman, and so on.
+
+app.get(/.*fly$/, (req, res) => {
+  res.send('/.*fly$/')
+})
+
+Route path: /users/:userId/books/:bookId
+Request URL: http://localhost:3000/users/34/books/8989
+To define routes with route parameters, simply specify the route parameters in the path of the route as shown below.
+
+app.get('/users/:userId/books/:bookId', (req, res) => {
+  res.send(req.params)
+})
+req.params: { "userId": "34", "bookId": "8989" }
+===================================================================================
+Route handlers
+You can provide multiple callback functions that behave like middleware to handle a request. The only exception is that these callbacks might invoke next('route') to bypass the remaining route callbacks. 
+
+More than one callback function can handle a route (make sure you specify the next object). For example:
+
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
+
+An array of callback functions can handle a route. For example:
+
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
+}
+
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
+}
+
+const cb2 = function (req, res) {
+  res.send('Hello from C!')
+}
+
+app.get('/example/c', [cb0, cb1, cb2])
+=================================================================================
+Response methods
+The methods on the response object (res) in the following table can send a response to the client, and terminate the request-response cycle. If none of these methods are called from a route handler, the client request will be left hanging.
+
+Method	Description
+res.download()	Prompt a file to be downloaded.
+res.end()	End the response process.
+res.json()	Send a JSON response.
+res.jsonp()	Send a JSON response with JSONP support.
+res.redirect()	Redirect a request.
+res.render()	Render a view template.
+res.send()	Send a response of various types.
+res.sendFile()	Send a file as an octet stream.
+res.sendStatus()	Set the response status code and send its string representation as the response body.
+===============================================================================
+app.route()
+You can create chainable route handlers for a route path by using app.route(). Because the path is specified at a single location, creating modular routes is helpful, as is reducing redundancy and typos. 
+app.route('/book')
+  .get((req, res) => {
+    res.send('Get a random book')
+  })
+  .post((req, res) => {
+    res.send('Add a book')
+  })
+  .put((req, res) => {
+    res.send('Update the book')
+  })
+================================================================================
+
+Middleware in Express
+In Express, middleware refers to functions that are executed during the lifecycle of a request. Middleware functions have access to the request (req) object, the response (res) object, and the next function in the application’s request-response cycle. These middleware functions can modify the request, response, or end the request-response cycle altogether.
+
+Types of Middleware
+Application-level Middleware: These are middleware functions bound to an Express app using app.use() or app.METHOD() (where METHOD is an HTTP verb such as GET, POST, etc.).
+Router-level Middleware: These are middleware functions bound to an Express router. It’s the same as app-level middleware but is specific to a router.
+Error-handling Middleware: Special middleware to handle errors. These are defined with 4 arguments (err, req, res, next).
+Built-in Middleware: Express provides some built-in middleware functions like express.json(), express.static(), etc.
+Third-party Middleware: Middleware packages like cors, body-parser, etc., can be added to Express apps.
+
+Built-in Middleware Example
+Express provides several built-in middleware functions, such as express.json() for parsing JSON bodies and express.static() for serving static files.
+
+const express = require('express');
+const app = express();
+
+// Built-in middleware to parse JSON request body
+app.use(express.json());
+
+Router-level Middleware
+Middleware can also be applied to specific routers, rather than globally to the entire application.
+
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Middleware specific to this router
+router.use((req, res, next) => {
+  console.log('Router-level middleware');
+  next();
+});
+router.get('/user', (req, res) => {
+  res.send('User Profile');
+});
+
+=======================================================================
+Add environmental variables
+
+create dev.env, qa.env files.
+
+set the values in env file
+PORT=3000
+DB_USER=root
+DB_PASSWORD=yourpassword
+SECRET_KEY=mysecretkey
+
+to use env file 
+const port = process.env.PORT
+
+to run the app with env file
+
+  "start": "node --env-file=dev.env app.js",
+    "qa": "node --env-file=qa.env app.js",
+	
+ignore .env in gitignore
+=====================================================================
+
+Built-in Middlewares in Express
+
+express.json([options])--options are inflate, limit, reviver, strict, type, verify
+It parses incoming requests with JSON payloads and is based on body-parser.
+
+Returns middleware that only parses JSON and only looks at requests where the Content-Type header matches the type option. This parser accepts any Unicode encoding of the body and supports automatic inflation of gzip and deflate encodings.
+
+express.static(root, [options])
+ It serves static files and is based on serve-static.
+ The root argument specifies the root directory from which to serve static assets. The function determines the file to serve by combining req.url with the provided root directory. When a file is not found, instead of sending a 404 response, it instead calls next() to move on to the next middleware, allowing for stacking and fall-backs.
+ 
+express.Router([options])-- options caseSensitive, mergeparams, strict
+
+express.urlencoded([options])-- It parses incoming requests with urlencoded payloads and is based on body-parser.
+
+=================================================================================
+Debug express application
+
+set DEBUG=express:* & node app.js
+
+==========================================================
+How to select different env files for dev, qa, uat, prod
+
+1. create env files like .env.development, .env.production and add the values in the files like DB_HOST= "prod_db_server"
+2. // Check for a specific environment variable, or default to development
+const env = process.env.NODE_ENV || 'development';
+3. Load env values in app
+	const dotenv = require('dotenv');
+
+// Check for a specific environment variable, or default to development
+const env = process.env.NODE_ENV || 'development';
+
+dotenv.config({
+  path: `.env.${env}`
+});
+
+console.log(process.env.DB_HOST);
+
+=============================================================

@@ -1,0 +1,134 @@
+1. How can we restrict the initial render of a component, but allow it to re-render based on dependencies subsequently, using the useEffect hook.
+
+Use useRef to track whether the component has initially rendered.
+Use useEffect to execute side-effects based on dependencies.
+Use conditional checks in the useEffect to only execute side-effects after the first render (not during the initial render).
+
+const hasMounted = useRef(false);  // This will track if the component has mounted
+
+  // This effect runs on every render
+  useEffect(() => {
+    if (!hasMounted.current) {
+      // Skip the effect on the initial render
+      hasMounted.current = true;
+      return;
+    }
+
+    // This will only run on subsequent renders after the initial render
+    console.log('Dependency (count) changed:', count);
+
+    // Example: Perform a side effect based on the updated dependency
+    // For instance, fetching data or updating other state based on `count`
+  }, [count]);
+  
+useRef is useful in this case because it persists across renders, but does not trigger a re-render when its value changes. This allows us to keep track of whether the component has already mounted without affecting the render cycle itself.
+====================================================================================================
+1. How to display dynamic html data in react ?
+	useState: We create two state variables: data to store the fetched data, and loading to track the loading state.
+	useEffect: The useEffect hook makes an API call after the component mounts (i.e., on the initial render).
+	fetch(): This is a built-in JavaScript function to retrieve data from an API. The data is then stored in the data state variable.
+	Dynamic List Rendering: We use data.map() to iterate over the fetched list of users and display their names dynamically in a <ul>.
+	Handling User Input (Dynamic Content)
+	You can capture user input (like text or form data) and dynamically update the UI based on that input using useState.
+2. How do you send data from parent component to child component in react ? --Props
+3. How to call parent component method from child component in react ? -- callback function
+4. How do you access the dom element ? --useRef
+	React provides refs to allow you to reference and interact with DOM elements directly. 
+	Access a DOM element to get its properties (like width, height, or value).
+	Manage focus, text selection, or media playback.
+	Integrate with third-party libraries that manipulate the DOM.
+5. How to bind array/array of objects to dropdown in react ? map
+6. Create a lazy loaded component in react ? lazy
+7. How to display data entered by the user in another textbox ? useState
+8. How to loop array/array of objects in react ? map
+9. How to conditionally render an element or text in react ? if else, ternary, && 
+10. How to change styles based on condition in react ?
+	1.in-line-  const [isActive, setIsActive] = useState(false);
+
+	const buttonStyle = {
+		backgroundColor: isActive ? 'green' : 'gray',    
+	};
+	<button style={buttonStyle} onClick={() => setIsActive(!isActive)}>
+        {isActive ? 'Active' : 'Inactive'}
+      </button>
+	 2. Using CSS Classes with Conditional Logic- <button className={isActive ? 'activeButton' : 'inactiveButton'}
+     3. css modules -- create modules.css file and import in component. <button className={isActive ? styles.activeButton : styles.inactiveButton} >
+        
+
+11. How to show and hide data based on condition in react ?-- if else, ternary, && 
+12. Bind array/array of objects to radio button in react ?-- map
+13. Display radio button data selected by user in another textbox ?--usestate
+14. How to call a method when component is rendered for the first time in react ? useEffect with [](empty) dependency
+15. Display keys and values of objects in a loop in react? --map
+16. How to rerender a component on value change in react ? useState
+17. How to call a method on every rerender of a component ? useEffect
+		const MyComponent = () => {
+		const [count, setCount] = useState(0);
+		
+		// Method to be called on every re-render
+		const logRender = () => {
+		console.log('Component re-rendered!');
+		};
+		
+		// `useEffect` with no dependency array runs on every render
+		useEffect(() => {
+		logRender();  // Call the method on every render
+		});
+18. How to add data into useState array in functional component in react ?-- spread operator 
+		const [items, setItems] = useState([1, 2, 3]);
+		
+		// Function to add multiple items to the array
+		const addMultipleItems = () => {
+		const newItems = [4, 5, 6];
+		setItems(prevItems => [...prevItems, ...newItems]);  // Spread both arrays
+		};
+19. Create a search textbox filter ?
+20.Create a counter component using useState ?
+21.Create a counter component using useReducer ?
+22.Change focus/enable/disable textbox in child component based on parent component button click ? 
+23. How to perform debouncing ?
+24.Create a component to fetch data from api ?
+25.Force a component to rerender with out using useState in react ?
+26. How to call a method immediately after state is updated or after component is rerendered ?
+27. How to display number of characters remaining functionality for textarea using react useRef?
+28.Given two dropdowns, select 2nd dropdown options based on value selected in one dropdown ?(Load states based on country selected)
+29.Perform type checking using prop-types ?
+30.Share data between components using context api ?
+31.Give an example of optimization using useMemo ?
+32.Give an example of optimization using usecallbacks in react ?
+33.Create an error boundary component in react ?
+34. How to display dropdown value selected by user in another textbox ?
+35.Create a pure component ?
+36.Create a controlled and uncontrolled component in react ?
+37.Create a custom hook using ?
+38.Create a popup using portal ?
+39.Which lifecycle hooks in class component are replaced with useEffect in functional components ? 
+40.Create a pagination component ?
+41. How do you safeguard your application ?
+42. What is the difference between controlled and uncontrolled components?
+Answer:
+Controlled Components: In controlled components, form data is handled by the state within the component. The component re-renders whenever the state changes.
+Uncontrolled Components: In uncontrolled components, form data is handled by the DOM itself. You use refs to access the DOM elements directly.
+
+
+=========================================
+http and https
+CORS
+Cross-Site Scripting (XSS)
+Cross-Site Request Forgery (CSRF)--CSRF is an attack where a user is tricked into performing unwanted actions on a website where they are authenticated. 
+SQL Injection
+
+Query for selecting books from location- blr from tables library, room, rack, book
+SELECT b.book_id, b.title, b.author, l.location, r.room_name, ra.rack_number
+FROM book b
+JOIN rack ra ON b.rack_id = ra.rack_id
+JOIN room r ON ra.room_id = r.room_id
+JOIN library l ON r.library_id = l.library_id
+WHERE l.location = 'BLR';
+
+gold prices updated on 5th jan, 15th jan and 30 jan. find gold price for 20 jan
+SELECT price
+FROM gold_prices
+WHERE price_date <= '2025-01-20'
+ORDER BY price_date DESC
+LIMIT 1;
